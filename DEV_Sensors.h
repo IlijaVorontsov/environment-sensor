@@ -116,7 +116,7 @@ struct DEV_CO2Sensor : Service::CarbonDioxideSensor {
       double co2ppm = mySensor.getCO2();
 
       if(co2ppm < 1000) co2abnormal->setVal(0);
-      else co2abnormal->setVal(1);
+      else if (co2ppm > 1100) co2abnormal->setVal(1);
       
       co2level->setVal(co2ppm);                         
       sprintf(c,"SCD41 Carbon Dioxide Update: %g\n",co2ppm);
